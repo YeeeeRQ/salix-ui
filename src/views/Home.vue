@@ -3,8 +3,8 @@
         <TopNav></TopNav>
         <div class="banner">
             <h1>Mint UI</h1>
-            <h3>简洁 轻量 </h3>
-            <h3>快速引用无负担</h3>
+            <p class="tagline">简洁 轻量 </p>
+            <p class="tagline">快速引用无负担</p>
             <p class="actions">
                 <a href="https://github.com">GitHub</a>
                 <router-link to="/doc" as="a">开始</router-link>
@@ -33,10 +33,16 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    > h1{
+        font-size: 3rem;
+    }
 
-    > h3{
+    > .tagline{
+        font-size: 1.5rem;
+        font-weight: lighter;
         margin-top: .5em;
     }
+
     >.actions {
         display: flex;
         justify-content: center;

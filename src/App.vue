@@ -7,19 +7,22 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
-  <router-link to="/">Page1</router-link> |
-  <router-link to="/xxx">Page2</router-link>
-  <hr>
+  <!-- <router-link to="/">Main Page</router-link> |
+  <router-link to="/doc">Doc</router-link>
+  <hr> -->
   <router-view/>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "./src/assets/style/reset.scss";
+@import "./src/assets/style/helper.scss";
+
+// #app {
+//   font-family: Avenir, Helvetica, Arial, sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   text-align: center;
+//   color: #2c3e50;
+//   margin-top: 60px;
+// }
 </style>

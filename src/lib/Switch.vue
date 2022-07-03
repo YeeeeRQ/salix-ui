@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 $h: 22px;
 $h2: $h - 4px;
+$t: 0.4s;
 
 button {
     height: $h;
@@ -30,6 +31,7 @@ button {
     border-radius: $h2;
     position: relative;
     background-color: rgb(167, 183, 192);
+    transition: background-color $t;
 }
 
 span {
@@ -40,6 +42,7 @@ span {
     width: $h2;
     background-color: white;
     border-radius: $h2/2;
+    transition: left $t;
 }
 
 button.checked>span {
@@ -48,5 +51,9 @@ button.checked>span {
 
 button.checked {
     background-color: rgb(20, 156, 241);
+}
+
+button::focus{
+    outline: none;
 }
 </style>

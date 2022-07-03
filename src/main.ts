@@ -7,7 +7,7 @@ import { createWebHashHistory, createRouter } from "vue-router";
 
 const history = createWebHashHistory();
 const router = createRouter({
-  history: history,
+  history,
   routes: [
     {
       path: "/",

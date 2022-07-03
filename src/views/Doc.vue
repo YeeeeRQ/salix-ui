@@ -2,7 +2,7 @@
     <div>
         <TopNav></TopNav>
         <div class="content">
-            <aside v-if="menuVisible">
+            <aside v-if="asideVisible">
                 <h2>组件列表</h2>
                 <ol>
                     <li>
@@ -34,9 +34,9 @@ export default {
 
     setup() {
 
-        const menuVisible = inject<Ref<boolean>>('xxx');
-        console.log('Doc MenuVisible:' + menuVisible.value);
-        return {menuVisible}
+        const asideVisible = inject<Ref<boolean>>('asideVisible');
+        console.log('Doc MenuVisible:' + asideVisible.value);
+        return { asideVisible }
     }
 }
 
@@ -49,11 +49,6 @@ aside {
     background-color: lightblue;
     width: 150px;
     padding: 16px;
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    padding-top: 70px;
 
     >h2 {
         margin-bottom: 4px;
@@ -63,6 +58,13 @@ aside {
         >li {
             padding: 4px 0;
         }
+    }
+
+    @media (max-width: 500px){
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 70px;
     }
 }
 </style>

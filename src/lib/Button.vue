@@ -1,6 +1,6 @@
 <template>
     <button class="sx-button"
-    :class="`theme-${theme}`">
+    :class="`sx-theme-${theme}`">
         <slot />
     </button>
 </template>
@@ -50,6 +50,28 @@ $radius: 4px;
     }
     &::-moz-focus-inner{
         border: 0;
+    }
+
+    &.sx-theme-link{
+        border-color: transparent;
+        box-shadow: none;
+        color: $blue;
+
+        &:hover,
+        &:focus{
+            color: lighten($blue, 10%);
+        }
+    }
+
+    &.sx-theme-text{
+        border-color: transparent;
+        box-shadow: none;
+        color: inherit;
+
+        &:hover,
+        &:focus{
+            background: darken(white, 5%);
+        }
     }
 
 }

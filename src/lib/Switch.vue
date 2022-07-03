@@ -1,15 +1,14 @@
 <template>
-    <button :class="{ checked:value }" @click="toggle">
-        <span></span>
+    <button class="sx-switch" :class="{ 'sx-checked': value }" @click="toggle">
+        <span class="sx-circle"></span>
     </button>
-    <div>{{value}}</div>
 </template>
 
 <script lang="ts">
 
 export default {
     name: "Switch",
-    props:{
+    props: {
         value: Boolean
     },
     setup(props, context) {
@@ -21,12 +20,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
 $t: 0.4s;
 
-button {
+.sx-switch {
     height: $h;
     width: $h*2;
     border: none;
@@ -34,28 +33,28 @@ button {
     position: relative;
     background-color: rgb(167, 183, 192);
     transition: background-color $t;
-}
 
-span {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: $h2;
-    width: $h2;
-    background-color: white;
-    border-radius: $h2;
-    transition: left $t;
-}
+    >span.sx-circle {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        height: $h2;
+        width: $h2;
+        background-color: white;
+        border-radius: $h2;
+        transition: left $t;
+    }
 
-button.checked>span {
-    left: calc(100% - #{$h2} - 2px);
-}
+    &.sx-checked>span {
+        left: calc(100% - #{$h2} - 2px);
+    }
 
-button.checked {
-    background-color: rgb(20, 156, 241);
-}
+    &.sx-checked {
+        background-color: rgb(20, 156, 241);
+    }
 
-button::focus{
-    outline: none;
+    &::focus {
+        outline: none;
+    }
 }
 </style>

@@ -1,18 +1,24 @@
 <template>
-    <div> Button </div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
+    <div>Button 示例</div>
+    <h1>示例1</h1>
+    <Button 
+    >你好</Button>
 </template>
 
 <script lang="ts">
+import Button from '../../lib/Button.vue';
+
 export default {
-    name: "SwitchDemo"
+    name: "ButtonDemo",
+    components: { Button },
+    setup() {
+        const onClick = () => {
+            console.log('hi');
+        }
+        return { onClick }
+    }
 }
 </script>
 
-<style lang="scss" scoped>
-
-
+<style lang="scss">
 </style>

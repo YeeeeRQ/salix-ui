@@ -1,18 +1,14 @@
 <template>
-    <div> Switch </div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
+    <Switch />
 </template>
 
 <script lang="ts">
+import Switch from '../../lib/Switch.vue'
 export default {
-    name: "SwitchDemo"
+    name: "SwitchDemo",
+    components: { Switch }
 }
 </script>
 
 <style lang="scss" scoped>
-
-
 </style>

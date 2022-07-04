@@ -13,19 +13,28 @@ export default {
     props: {
         theme: {
             type: String,
-            default: 'button'
+            default: 'default'
         },
         size: {
             type: String,
             default: 'normal'
+        },
+        level: {
+            type: String,
+            default: 'normal'
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     setup(props) {
-        const { theme, size } = props;
+        const { theme, size, level } = props;
         const classes = computed(() => {
             return {
                 [`sx-theme-${theme}`]: theme,
                 [`sx-size-${size}`]: size,
+                [`sx-level-${level}`]: level,
             }
         });
         return {classes};
@@ -38,6 +47,7 @@ $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
+$red: #e33838;
 $radius: 4px;
 
 .sx-button {
@@ -77,6 +87,7 @@ $radius: 4px;
         border-color: transparent;
         box-shadow: none;
         color: $blue;
+        background-color: inherit;
 
         &:hover,
         &:focus {
@@ -88,6 +99,7 @@ $radius: 4px;
         border-color: transparent;
         box-shadow: none;
         color: inherit;
+        background-color: inherit;
 
         &:hover,
         &:focus {
@@ -104,6 +116,21 @@ $radius: 4px;
         font-size: 24px;
         height: 48px;
         padding: 0 16px;
+    }
+
+    &.sx-theme-default.sx-level-main{
+        background-color: $blue;
+        color: white;
+    }
+    &.sx-theme-default.sx-level-danger{
+        background-color: $red;
+        color: white;
+    }
+    &.sx-theme-link.sx-level-danger{
+        color:$red;
+    }
+    &.sx-theme-text.sx-level-danger{
+        color:$red;
     }
 
 }

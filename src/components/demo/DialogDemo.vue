@@ -2,12 +2,16 @@
     <h1>Dialog 示例</h1>
     <div>
         <Button @click="handleBtnClick">Toggle</Button>
+
         <Dialog 
             v-model:visible="visible" 
             :closeOnClickOverlay="false" 
             :ok="f1" 
             :cancel="f2" 
-        />
+        >
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, reprehenderit ut tempora dolorum voluptatum expedita, nihil cumque eaque vitae asperiores accusamus esse beatae nobis, placeat eligendi sequi omnis! Ipsam, iusto!</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, reprehenderit ut tempora dolorum voluptatum expedita, nihil cumque eaque vitae asperiores accusamus esse beatae nobis, placeat eligendi sequi omnis! Ipsam, iusto!</p>
+        </Dialog>
     </div>
 </template>
 

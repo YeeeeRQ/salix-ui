@@ -5,17 +5,12 @@
             <div class="sx-dialog">
                 <header>
                     <span class="sx-dialog-title">
-                        标题
+                        {{title}}
                     </span>
                     <span class="sx-dialog-close" @click="close"></span>
                 </header>
                 <main>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, ab, ratione dolores nihil nemo
-                        amet magni nisi eius eaque soluta possimus ex exercitationem temporibus iste culpa odit. Beatae,
-                        reprehenderit in.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, ab, ratione dolores nihil nemo
-                        amet magni nisi eius eaque soluta possimus ex exercitationem temporibus iste culpa odit. Beatae,
-                        reprehenderit in.</p>
+                    <slot />
                 </main>
                 <footer>
                     <Button level="main" @click="ok">OK</Button>
@@ -32,6 +27,10 @@ export default {
     name: "Dialog",
     components: { Button },
     props: {
+        title:{
+            type: String,
+            default: '提示'
+        },
         visible: {
             type: Boolean,
             default: false
@@ -49,6 +48,8 @@ export default {
     },
     setup(props, context) {
         // const { visible } = props;
+        // console.log('context.slots',context.slots)
+
         const close = () => {
             context.emit('update:visible', false);
         }

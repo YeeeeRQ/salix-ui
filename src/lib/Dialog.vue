@@ -36,11 +36,11 @@ export default {
             type: Boolean,
             default: true
         },
-        ok:{
-            type:Function
+        ok: {
+            type: Function
         },
-        cancel:{
-            type:Function
+        cancel: {
+            type: Function
         }
     },
     setup(props, context) {
@@ -56,15 +56,17 @@ export default {
             }
         }
 
-        const ok = ()=>{
-            if(props.ok?.() !== false){
+        const ok = () => {
+            if (props.ok?.()) {
                 close();
             }
         }
 
         const cancel = () => {
-            context.emit('cancel');
-            close();
+            if(props.cancel?.()){
+                context.emit('cancel');
+                close();
+            }
         }
 
         return { close, onClickOverlay, ok, cancel };

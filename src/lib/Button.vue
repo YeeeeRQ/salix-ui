@@ -1,6 +1,6 @@
 <template>
-    <button class="sx-button" :class="classes"
-    :disabled="disabled">
+    <button class="sx-button" :class="classes" :disabled="disabled">
+        <span v-if="loading" class="sx-loadingIndicator"></span>
         <slot />
     </button>
 </template>
@@ -27,6 +27,10 @@ export default {
         disabled: {
             type: Boolean,
             default: false
+        },
+        loading: {
+            type: Boolean,
+            default: false
         }
     },
     setup(props) {
@@ -38,7 +42,7 @@ export default {
                 [`sx-level-${level}`]: level,
             }
         });
-        return {classes};
+        return { classes };
     }
 }
 </script>
@@ -114,44 +118,72 @@ $radius: 4px;
         height: 20px;
         padding: 0 4px;
     }
-    &.sx-size-big{
+
+    &.sx-size-big {
         font-size: 24px;
         height: 48px;
         padding: 0 16px;
     }
 
-    &.sx-theme-default.sx-level-main{
+    &.sx-theme-default.sx-level-main {
         background-color: $blue;
         color: white;
     }
-    &.sx-theme-default.sx-level-danger{
+
+    &.sx-theme-default.sx-level-danger {
         background-color: $red;
         color: white;
     }
-    &.sx-theme-link.sx-level-danger{
-        color:$red;
-    }
-    &.sx-theme-text.sx-level-danger{
-        color:$red;
+
+    &.sx-theme-link.sx-level-danger {
+        color: $red;
     }
 
-    &.sx-theme-default{
-        &[disabled]{
+    &.sx-theme-text.sx-level-danger {
+        color: $red;
+    }
+
+    &.sx-theme-default {
+        &[disabled] {
             cursor: not-allowed;
             color: $grey;
             background-color: #dbdbdb;
 
-            &:hover{
+            &:hover {
                 border-color: $grey;
             }
         }
     }
+
     &.sx-theme-link,
-    &.sx-theme-text{
-        &[disabled]{
+    &.sx-theme-text {
+        &[disabled] {
             background: inherit;
             cursor: not-allowed;
             color: $grey;
+        }
+    }
+
+    >.sx-loadingIndicator {
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin-right: 6px;
+        border-radius: 100%;
+        border-color: $blue $blue $blue transparent;
+        border-style: solid;
+        border-width: 2px;
+        animation: sx-spin 1s infinite linear;
+    }
+
+    @keyframes sx-spin {
+
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
         }
     }
 }

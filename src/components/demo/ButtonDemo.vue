@@ -36,6 +36,12 @@
         <Button disabled theme="text">Disabled</Button>
     </dir>
 
+    <h2>示例5</h2>
+    <dir>
+        <Button loading>Loading...</Button>
+        <Button>Done</Button>
+    </dir>
+
 </template>
 
 <script lang="ts">

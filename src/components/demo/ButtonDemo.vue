@@ -1,18 +1,18 @@
 <template>
     <h1>Button 示例</h1>
 
-    <h2>示例1</h2>
+    <h2>类型</h2>
     <Button>default button</Button>
     <Button theme="default">default button</Button>
     <Button theme="link">link button</Button>
     <Button theme="text">text button</Button>
 
-    <h2>示例2</h2>
+    <h2>尺寸</h2>
     <Button size="small">small button</Button>
     <Button size="normal">normal button</Button>
     <Button size="big">big button</Button>
 
-    <h2>示例3</h2>
+    <h2>级别</h2>
     <dir>
         <Button level="main">main</Button>
         <Button>normal</Button>
@@ -29,14 +29,14 @@
         <Button theme="text" level="danger">danger</Button>
     </dir>
 
-    <h2>示例4</h2>
+    <h2>禁用</h2>
     <dir>
         <Button disabled>Disabled</Button>
         <Button disabled theme="link">Disabled</Button>
         <Button disabled theme="text">Disabled</Button>
     </dir>
 
-    <h2>示例5</h2>
+    <h2>载入</h2>
     <dir>
         <Button loading>Loading...</Button>
         <Button>Done</Button>

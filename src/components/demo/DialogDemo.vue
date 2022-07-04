@@ -9,8 +9,13 @@
             :ok="f1" 
             :cancel="f2" 
         >
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, reprehenderit ut tempora dolorum voluptatum expedita, nihil cumque eaque vitae asperiores accusamus esse beatae nobis, placeat eligendi sequi omnis! Ipsam, iusto!</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, reprehenderit ut tempora dolorum voluptatum expedita, nihil cumque eaque vitae asperiores accusamus esse beatae nobis, placeat eligendi sequi omnis! Ipsam, iusto!</p>
+        <template v-slot:title>
+            <strong>加粗标题</strong>
+        </template>
+        <template v-slot:content>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, reprehenderit ut tempora dolorum voluptatum expedita, nihil cumque eaque vitae asperiores accusamus esse beatae nobis, placeat eligendi sequi omnis! Ipsam, iusto!</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, reprehenderit ut tempora dolorum voluptatum expedita, nihil cumque eaque vitae asperiores accusamus esse beatae nobis, placeat eligendi sequi omnis! Ipsam, iusto!</p>
+        </template>
         </Dialog>
     </div>
 </template>

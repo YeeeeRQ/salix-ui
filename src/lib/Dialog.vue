@@ -5,12 +5,13 @@
             <div class="sx-dialog">
                 <header>
                     <span class="sx-dialog-title">
-                        {{title}}
+                        <!-- {{title}} -->
+                        <slot name="title" />
                     </span>
                     <span class="sx-dialog-close" @click="close"></span>
                 </header>
                 <main>
-                    <slot />
+                    <slot name="content" />
                 </main>
                 <footer>
                     <Button level="main" @click="ok">OK</Button>
@@ -27,10 +28,6 @@ export default {
     name: "Dialog",
     components: { Button },
     props: {
-        title:{
-            type: String,
-            default: '提示'
-        },
         visible: {
             type: Boolean,
             default: false

@@ -1,18 +1,34 @@
 <template>
-    <button class="sx-button"
-    :class="`sx-theme-${theme}`">
+    <button class="sx-button" :class="classes">
         <slot />
     </button>
 </template>
 
 <script lang="ts">
+import { computed } from "@vue/reactivity"
+
+
 export default {
     name: "Button",
     props: {
         theme: {
             type: String,
-            default:'button'
+            default: 'button'
+        },
+        size: {
+            type: String,
+            default: 'normal'
         }
+    },
+    setup(props) {
+        const { theme, size } = props;
+        const classes = computed(() => {
+            return {
+                [`sx-theme-${theme}`]: theme,
+                [`sx-size-${size}`]: size,
+            }
+        });
+        return {classes};
     }
 }
 </script>
@@ -23,7 +39,8 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
-.sx-button{
+
+.sx-button {
     box-sizing: border-box;
     height: $h;
     padding: 0 12px;
@@ -37,41 +54,56 @@ $radius: 4px;
     border: 1px solid $border-color;
     border-radius: $radius;
     box-shadow: 0 1px 0 fade-out (black, 0.95);
-    & + & {
+
+    &+& {
         margin-left: 8px;
     }
+
     &:hover,
-    &:focus{
+    &:focus {
         color: $blue;
         border-color: $blue;
     }
-    &:focus{
+
+    &:focus {
         outline: none;
     }
-    &::-moz-focus-inner{
+
+    &::-moz-focus-inner {
         border: 0;
     }
 
-    &.sx-theme-link{
+    &.sx-theme-link {
         border-color: transparent;
         box-shadow: none;
         color: $blue;
 
         &:hover,
-        &:focus{
+        &:focus {
             color: lighten($blue, 10%);
         }
     }
 
-    &.sx-theme-text{
+    &.sx-theme-text {
         border-color: transparent;
         box-shadow: none;
         color: inherit;
 
         &:hover,
-        &:focus{
+        &:focus {
             background: darken(white, 5%);
         }
+    }
+
+    &.sx-size-small {
+        font-size: 12px;
+        height: 20px;
+        padding: 0 4px;
+    }
+    &.sx-size-big{
+        font-size: 24px;
+        height: 48px;
+        padding: 0 16px;
     }
 
 }

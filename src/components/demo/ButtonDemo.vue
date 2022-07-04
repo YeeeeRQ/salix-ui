@@ -5,6 +5,10 @@
     <Button theme="button">default button</Button>
     <Button theme="link">link button</Button>
     <Button theme="text">text button</Button>
+    <h1>示例2</h1>
+    <Button size="small">button</Button>
+    <Button size="normal">button</Button>
+    <Button size="big">button</Button>
 </template>
 
 <script lang="ts">

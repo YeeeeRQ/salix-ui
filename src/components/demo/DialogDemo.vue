@@ -1,14 +1,19 @@
 <template>
-    <div> Dialog </div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
+    <h1>Dialog 示例</h1>
+    <div>
+        <Dialog/>
+    </div>
 </template>
 
 <script lang="ts">
+import Dialog from '../../lib/Dialog.vue';
+
 export default {
-    name: "SwitchDemo"
+    name: "SwitchDemo",
+    components:{
+        Dialog
+    }
+
 }
 </script>
 

@@ -1,5 +1,6 @@
 <template>
-    <button class="sx-button" :class="classes">
+    <button class="sx-button" :class="classes"
+    :disabled="disabled">
         <slot />
     </button>
 </template>
@@ -48,6 +49,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $red: #e33838;
+$grey: #a3a3a3;
 $radius: 4px;
 
 .sx-button {
@@ -133,5 +135,24 @@ $radius: 4px;
         color:$red;
     }
 
+    &.sx-theme-default{
+        &[disabled]{
+            cursor: not-allowed;
+            color: $grey;
+            background-color: #dbdbdb;
+
+            &:hover{
+                border-color: $grey;
+            }
+        }
+    }
+    &.sx-theme-link,
+    &.sx-theme-text{
+        &[disabled]{
+            background: inherit;
+            cursor: not-allowed;
+            color: $grey;
+        }
+    }
 }
 </style>

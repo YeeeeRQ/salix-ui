@@ -31,9 +31,9 @@
 
     <h2>示例4</h2>
     <dir>
-        <Button level="main" disabled>main</Button>
-        <Button disabled>normal</Button>
-        <Button level="danger" disabled>danger</Button>
+        <Button disabled>Disabled</Button>
+        <Button disabled theme="link">Disabled</Button>
+        <Button disabled theme="text">Disabled</Button>
     </dir>
 
 </template>

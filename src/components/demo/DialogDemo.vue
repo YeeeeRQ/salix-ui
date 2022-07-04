@@ -1,10 +1,13 @@
 <template>
     <h1>Dialog 示例</h1>
     <div>
-        <!-- <Dialog :visible="true" /> -->
-        <!-- <Dialog :visible="false" /> -->
-        <Button  @click="handleBtnClick">Toggle</Button>
-        <Dialog v-model:visible="x" />
+        <Button @click="handleBtnClick">Toggle</Button>
+        <Dialog 
+            v-model:visible="visible" 
+            :closeOnClickOverlay="false" 
+            :ok="f1" 
+            :cancel="f2" 
+        />
     </div>
 </template>
 
@@ -15,22 +18,28 @@ import { ref } from 'vue';
 
 export default {
     name: "SwitchDemo",
-    components:{
+    components: {
         Dialog,
         Button
     },
-    setup(){
-        const x = ref(false);
-        const handleBtnClick= ()=>{
-            x.value =  !x.value;
+    setup() {
+        const visible = ref(false);
+        const handleBtnClick = () => {
+            visible.value = !visible.value;
         }
-        return {x, handleBtnClick};
+        const f1 = () =>{
+            console.log("f1");
+            return false;
+        }
+        const f2 = () =>{
+            console.log("f2");
+            return false;
+        }
+        return { visible, handleBtnClick, f1, f2 };
     }
 
 }
 </script>
 
 <style lang="scss" scoped>
-
-
 </style>

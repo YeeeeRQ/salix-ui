@@ -1,14 +1,20 @@
 <template>
     <div> Tabs </div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
-<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi alias quaerat ducimus explicabo accusantium atque dolorum, nam natus doloribus veniam deleniti nulla reprehenderit ex expedita odio quo facilis in repellat!</div>
+    <h2>示例1</h2>
+    <Tabs>
+        <Tab title="导航1">内容1</Tab>
+        <Tab title="导航2">内容2</Tab>
+    </Tabs>
 </template>
 
 <script lang="ts">
+import Tabs from '../../lib/Tabs.vue';
+
 export default {
-    name: "SwitchDemo"
+    name: "TabsDemo",
+    components:{
+        Tabs
+    }
 }
 </script>
 

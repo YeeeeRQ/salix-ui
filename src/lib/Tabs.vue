@@ -1,24 +1,32 @@
 <template>
-    <div>Tabs</div>
-    <component :is="defaults[0]" />
-    <component :is="defaults[1]" />
+    <div v-for="t,index in titles" :key="index">{{t}}</div>
+    <component v-for="tab, index in tabs" :is="tab" :key="index"/>
 </template>
 
 <script lang="ts">
-import { ssrContextKey } from "vue";
+import { callWithAsyncErrorHandling } from 'vue';
+import Tab from './Tab.vue';
 
 export default {
     name: "Tabs",
-    setup(props, context){
+    setup(props, context) {
         const defaults = context.slots.default()
+        const tabs = defaults.filter((item) => item.type === Tab)
+        if(defaults.length > tabs.length){
+            console.warn('Tabs tag must include Tab tag');
+        }
+
+        const titles = tabs.map((tag)=>{
+            return tag.props.title;
+        })
+
         return {
-            defaults
+            tabs,
+            titles
         }
     }
 }
 </script>
 
 <style lang="scss">
-
-
 </style>

@@ -9,11 +9,12 @@
 
 <script lang="ts">
 import Tabs from '../../lib/Tabs.vue';
+import Tab from '../../lib/Tab.vue';
 
 export default {
     name: "TabsDemo",
     components:{
-        Tabs
+        Tabs,Tab
     }
 }
 </script>

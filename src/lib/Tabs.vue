@@ -1,75 +1,101 @@
 <template>
   <div class="sx-tabs">
-    <div class="sx-tabs-nav">
+    <div class="sx-tabs-nav" ref="container">
       <div
-        class="sx-tabs-nav-item"
         v-for="(t, index) in titles"
-        :ref="el => {if (el)navItems[index] = el}"
+        class="sx-tabs-nav-item"
+        :class="{
+          selected: t.title === selectedTitle,
+          'sx-tabs-nav-disabled': t.disabled,
+        }"
         :key="index"
-        :class="{ selected: t === selected }"
+        :ref="
+          (el) => {
+            if (t.title === selectedTitle) selectedItem = el;
+          }
+        "
         @click="select(t)"
       >
-        {{ t }}
+        {{ t.title }}
       </div>
       <div class="sx-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="sx-tabs-content">
-      <component :is="current" :key="current.props.title" />
+      <component
+        class="sx-tabs-content-item"
+        :is="current"
+        :key="current.props.title"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, ref} from "@vue/reactivity";
-import { onMounted } from "vue";
+import { computed, ref, onMounted, watchEffect } from "vue";
 import Tab from "./Tab.vue";
-
 export default {
-  name: "Tabs",
   props: {
-    selected: {
+    selectedTitle: {
       type: String,
     },
   },
   setup(props, context) {
-    const navItems = ref<HTMLDivElement[]>([])
-    const indicator = ref<HTMLDivElement>(null)
-    onMounted(()=>{
-      const divs = navItems.value
-      const result = divs.filter(div=>div.classList.contains('selected'))[0]
-      const {width} = result.getBoundingClientRect()
-      indicator.value.style.width = width + 'px'
-    })
+    const selectedItem = ref<HTMLDivElement>(null);
+    const indicator = ref<HTMLDivElement>(null);
+    const container = ref<HTMLDivElement>(null);
+    onMounted(() => {
+      watchEffect(
+        () => {
+          const { width, left: resultLeft } =
+            selectedItem.value.getBoundingClientRect();
+          const { left: containerLeft } =
+            container.value.getBoundingClientRect();
+
+          indicator.value.style.width = width + "px";
+          indicator.value.style.left = resultLeft - containerLeft + "px";
+        },
+        {
+          flush: "post",
+        }
+      );
+    });
 
     const defaults = context.slots.default();
-    const tabs = defaults.filter((item) => item.type === Tab);
-    if (defaults.length > tabs.length) {
-      console.warn("Tabs tag must include Tab tag");
-    }
-
-    // const current = tabs.filter((tag) => {
-    //   return tag.props.title === props.selected;
-    // })[0];
-    const current = computed(() => {
-      return tabs.find((tag) => tag.props.title === props.selected);
+    defaults.forEach((tab) => {
+      if (tab.type !== Tab) {
+        throw new Error("Tabs 子标签必须为 Tab");
+      }
     });
-
-    const titles = tabs.map((tag) => {
-      return tag.props.title;
+    const titles = defaults.map((tab) => {
+      if (tab.props.disabled || tab.props.disabled === "") {
+        return {
+          title: tab.props.title,
+          disabled: true,
+        };
+      } else {
+        return {
+          title: tab.props.title,
+          disabled: false,
+        };
+      }
     });
-
-    const select = (title: string) => {
-      context.emit("update:selected", title);
+    const select = (t: { title: string; disabled: boolean }) => {
+      if (!t.disabled) {
+        context.emit("update:selectedTitle", t.title);
+      }
     };
+    const current = computed(() => {
+      return defaults.find((tab) => tab.props.title === props.selectedTitle);
+    });
 
     return {
-      tabs,
+      defaults,
       titles,
       current,
       select,
-      navItems,
-      indicator
-
+      selectedItem,
+      indicator,
+      container,
     };
   },
 };
@@ -81,7 +107,6 @@ $color: #333;
 $border-color: #d9d9d9;
 
 .sx-tabs {
-
   &-nav {
     display: flex;
     color: $color;
@@ -100,12 +125,17 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+
+      &.sx-tabs-nav-disabled {
+        color: #ccc;
+        cursor: not-allowed;
+      }
     }
 
-    &-indicator{
+    &-indicator {
       position: absolute;
       height: 3px;
-      background-color: $blue;
+      background: $blue;
       left: 0;
       bottom: -1px;
       width: 100px;

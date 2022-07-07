@@ -1,9 +1,10 @@
 <template>
   <div>Tabs</div>
   <h2>示例1</h2>
-  <Tabs v-model:selected="tabSelected">
+  <Tabs v-model:selectedTitle="tabSelected">
     <Tab title="导航1">内容1</Tab>
-    <Tab title="导航2">内容2</Tab>
+    <Tab title="导航22">内容22</Tab>
+    <Tab title="导航333">内容333</Tab>
   </Tabs>
 </template>
 

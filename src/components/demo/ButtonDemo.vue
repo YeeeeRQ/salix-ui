@@ -13,34 +13,34 @@
     <Button size="big">big button</Button>
 
     <h2>级别</h2>
-    <dir>
+    <div>
         <Button level="main">main</Button>
         <Button>normal</Button>
         <Button level="danger">danger</Button>
-    </dir>
-    <dir>
+    </div>
+    <div>
         <Button theme="link" level="main">main</Button>
         <Button theme="link">normal</Button>
         <Button theme="link" level="danger">danger</Button>
-    </dir>
-    <dir>
+    </div>
+    <div>
         <Button theme="text" level="main">main</Button>
         <Button theme="text">normal</Button>
         <Button theme="text" level="danger">danger</Button>
-    </dir>
+    </div>
 
     <h2>禁用</h2>
-    <dir>
+    <div>
         <Button disabled>Disabled</Button>
         <Button disabled theme="link">Disabled</Button>
         <Button disabled theme="text">Disabled</Button>
-    </dir>
+    </div>
 
     <h2>载入</h2>
-    <dir>
+    <div>
         <Button loading>Loading...</Button>
         <Button>Done</Button>
-    </dir>
+    </div>
 
 </template>
 

@@ -1,3 +1,5 @@
+import 'virtual:svg-icons-register'
+
 import "./lib/salix.scss";
 
 import { createApp } from "vue";

@@ -1,15 +1,17 @@
 <template>
   <div class="topNavWrapper">
     <div class="topNav">
-      <div class="logo">
+      <router-link to="/" class="logo">
         <SvgIcon name="LOGO"></SvgIcon>
         <span>alix</span>
-      </div>
+      </router-link>
       <ul class="menu">
-        <li>文档</li>
+        <li>
+          <router-link to="/doc" as="a">文档</router-link>
+        </li>
         <li>帮助</li>
       </ul>
-      <span class="toggleAside" @click="toggleMenu"></span>
+      <SvgIcon v-if="toggleMenuButtonVisible" name="menu" class="toggleAside" @click="toggleMenu"></SvgIcon>
     </div>
   </div>
 </template>
@@ -20,6 +22,12 @@ import { inject, Ref } from "vue";
 
 export default {
   name: "TopNav",
+  props:{
+    toggleMenuButtonVisible:{
+      type:Boolean,
+      default: false
+    },
+  },
   components: {
     SvgIcon,
   },
@@ -42,6 +50,7 @@ export default {
 }
 
 .topNav {
+  background-color: #f8f9f8;
   color: #303030;
   display: flex;
   padding: 6px 16px;
@@ -86,16 +95,15 @@ export default {
   }
 
   > .toggleAside {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: red;
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-
     display: none;
+    // display: inline-block;
+    // background-color: red;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    left: 12px;
+    top: 26px;
+    transform: translateY(-50%);
   }
 
   @media (max-width: 500px) {

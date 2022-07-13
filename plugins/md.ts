@@ -12,8 +12,9 @@ export default function () {
                 });
 
                 const _sfc_render =() => {
-                    return h("div", {
+                    return h("article", {
                       innerHTML: ${JSON.stringify(marked(src))}, 
+                      class:"markdown-body"
                     })
                 };
 

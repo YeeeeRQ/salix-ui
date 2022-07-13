@@ -1,4 +1,5 @@
 import 'virtual:svg-icons-register'
+import "github-markdown-css"
 
 import "./lib/salix.scss";
 

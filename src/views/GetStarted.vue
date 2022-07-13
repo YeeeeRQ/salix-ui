@@ -1,14 +1,11 @@
 <template>
-    <div>GetStarted</div>
+    <Start/>
 </template>
 
 <script lang="ts">
+import Start from '../markdown/get-started.md';
 export default {
-    name: "GetStarted"
+    name: "GetStarted",
+    components: {Start}
 }
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

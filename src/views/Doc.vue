@@ -95,7 +95,7 @@ export default {
 }
 
 aside {
-  background-color: lightblue;
+  background-color: #f6f6f6;
   // border: 5px dashed 1px;
   width: 150px;
 
@@ -106,10 +106,11 @@ aside {
   // padding: 16px;
   padding-top: 70px;
   height: 100%;
+  border-right: 1px solid rgba(0,0,0,.1);
 
   > h2 {
     margin-bottom: 4px;
-    padding-left: 16px;
+    padding: 8px 12px;
   }
 
   > ol {
@@ -118,13 +119,23 @@ aside {
     flex-direction: column;
     > li {
       display: inline-block;
-      border: 1px solid red;
+      // border: 1px solid red;
       // padding: 4px 0;
       // padding-left: 16px;
       // padding-top: 6px;
-      :hover {
+      > a {
+        display: block;
+        padding: 4px 24px;
+      }
+      .router-link-active {
+        text-decoration: underline;
         // background-color: #f6f6f6;
-        background: black;
+      }
+
+      :hover {
+        color: #a3e5b2;
+        // background-color: #e0e0f0;
+        // background: black;
       }
     }
   }

@@ -754,6 +754,11 @@
   "resolved" "https://registry.npmmirror.com/he/-/he-1.2.0.tgz"
   "version" "1.2.0"
 
+"highlight.js@^11.5.1":
+  "integrity" "sha512-LKzHqnxr4CrD2YsNoIf/o5nJ09j4yi/GcH5BnYz9UnVpZdS4ucMgvP61TDty5xJcFGRjnH4DpujkS9bHT3hq0Q=="
+  "resolved" "https://registry.npmmirror.com/highlight.js/-/highlight.js-11.5.1.tgz"
+  "version" "11.5.1"
+
 "htmlparser2@^3.8.3":
   "integrity" "sha512-IgieNijUMbkDovyoKObU1DUhm1iwNYE/fuifEoEHfd1oZKZDaONBSkal7Y01shxsM49R4XaMdGez3WnF9UfiCQ=="
   "resolved" "https://registry.npmmirror.com/htmlparser2/-/htmlparser2-3.10.1.tgz"
@@ -1245,6 +1250,11 @@
   dependencies:
     "posthtml-parser" "^0.2.0"
     "posthtml-render" "^1.0.5"
+
+"prismjs@^1.28.0":
+  "integrity" "sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw=="
+  "resolved" "https://registry.npmmirror.com/prismjs/-/prismjs-1.28.0.tgz"
+  "version" "1.28.0"
 
 "query-string@^4.3.2":
   "integrity" "sha512-O2XLNDBIg1DnTOa+2XrIwSiXEV8h2KImXUnjhhn2+UsvZ+Es2uyd5CCRTNQlDGbzUQOW3aYCBx9rVA6dzsiY7Q=="

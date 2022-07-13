@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "github-markdown-css": "^5.1.0",
+    "highlight.js": "^11.5.1",
+    "prismjs": "^1.28.0",
     "sass": "^1.52.3",
     "scss": "^0.2.4",
     "vue": "^3.2.25",

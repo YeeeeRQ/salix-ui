@@ -5,5 +5,5 @@
 然后在您的代码中写入下面的代码
 
 ```javascript
-import {Button,Switch,Dialog,openDialog,Tabs,Tab} from 'salix-ui'
+import {Button, Switch, Dialog, Tabs, Tab} from "salix-ui";
 ```

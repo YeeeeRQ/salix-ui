@@ -1,23 +1,29 @@
 <template>
-    <article class="markdown-body" v-html="content"></article>
+  <article class="markdown-body" v-html="content"></article>
 </template>
 
 <script lang="ts">
-import { ref } from "vue"
+import { ref } from "vue";
+import hljs from "highlight.js";
+
 export default {
-    name: "Markdown",
-    props:{
-        path: {
-            type: String,
-            require: true
-        }
+  name: "Markdown",
+  props: {
+    path: {
+      type: String,
+      require: true,
     },
-    setup(props){
-        const content = ref<string>(null);
-        import(props.path).then(result =>{
-            content.value = result.default
-        })
-        return {content}
-    }
-}
+  },
+  setup(props) {
+    const content = ref<string>(null);
+    import(props.path).then((result) => {
+      let html = result.default;
+      content.value = html;
+    });
+    return { content };
+  },
+  updated(){
+    hljs.highlightAll();
+  }
+};
 </script>

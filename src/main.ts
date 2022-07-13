@@ -1,6 +1,8 @@
 import 'virtual:svg-icons-register'
+
 import "github-markdown-css"
 import Markdown from './components/Markdown.vue';
+import 'highlight.js/styles/github.css';
 
 import "./lib/salix.scss";
 

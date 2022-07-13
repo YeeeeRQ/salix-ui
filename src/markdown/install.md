@@ -3,11 +3,11 @@
 打开终端运行下列命令:
 
 ```bash
-npm install lemontreeui
+npm install salix-ui
 ```
 
 或
 
 ```bash
-yarn add lemontreeui
+yarn add salix-ui
 ```

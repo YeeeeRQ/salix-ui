@@ -1,14 +1,13 @@
 <template>
-    <div>Install</div>
+  <installMD />
 </template>
 
 <script lang="ts">
+import installMD from "../markdown/install.md";
 export default {
-    name: "Install"
-}
+  name: "Install",
+  components: {
+    installMD,
+  },
+};
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

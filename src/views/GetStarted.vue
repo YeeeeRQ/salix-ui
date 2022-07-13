@@ -1,11 +1,11 @@
 <template>
-    <Start/>
+    <startMD/>
 </template>
 
 <script lang="ts">
-import Start from '../markdown/get-started.md';
+import startMD from '../markdown/get-started.md';
 export default {
     name: "GetStarted",
-    components: {Start}
+    components: {startMD}
 }
 </script>

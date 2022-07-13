@@ -1,14 +1,13 @@
 <template>
-    <div>Intro</div>
+    <introMD />
 </template>
 
 <script lang="ts">
+import introMD from '../markdown/intro.md';
 export default {
-    name: "Intro"
+    name: "Intro",
+    components:{
+        introMD
+    }
 }
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

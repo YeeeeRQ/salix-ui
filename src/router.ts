@@ -2,8 +2,6 @@ import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
 
 import Markdown from './components/Markdown.vue';
-import GetStarted from './views/GetStarted.vue';
-import Install from './views/Install.vue';
 
 import DocDemo from "./components/demo/DocDemo.vue";
 import SwitchDemo from './components/demo/SwitchDemo.vue';

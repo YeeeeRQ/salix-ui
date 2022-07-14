@@ -1,31 +1,20 @@
 <template>
   <div class="sx-tabs">
     <div class="sx-tabs-nav" ref="container">
-      <div
-        v-for="(t, index) in titles"
-        class="sx-tabs-nav-item"
-        :class="{
-          selected: t.title === selectedTitle,
-          'sx-tabs-nav-disabled': t.disabled,
-        }"
-        :key="index"
-        :ref="
-          (el) => {
-            if (t.title === selectedTitle) selectedItem = el;
-          }
-        "
-        @click="select(t)"
-      >
+      <div v-for="(t, index) in titles" class="sx-tabs-nav-item" :class="{
+        selected: t.title === selectedTitle,
+        'sx-tabs-nav-disabled': t.disabled,
+      }" :key="index" :ref="
+  (el) => {
+    if (t.title === selectedTitle) selectedItem = el;
+  }
+" @click="select(t)">
         {{ t.title }}
       </div>
       <div class="sx-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="sx-tabs-content">
-      <component
-        class="sx-tabs-content-item"
-        :is="current"
-        :key="current.props.title"
-      />
+      <component class="sx-tabs-content-item" :is="current" :key="current.props.title" />
     </div>
   </div>
 </template>
@@ -40,19 +29,21 @@ export default {
     },
   },
   setup(props, context) {
-    const selectedItem = ref<HTMLDivElement>(null);
-    const indicator = ref<HTMLDivElement>(null);
-    const container = ref<HTMLDivElement>(null);
+    const selectedItem = ref<HTMLDivElement | null>(null);
+    const indicator = ref<HTMLDivElement | null>(null);
+    const container = ref<HTMLDivElement | null>(null);
     onMounted(() => {
       watchEffect(
         () => {
-          const { width, left: resultLeft } =
-            selectedItem.value.getBoundingClientRect();
-          const { left: containerLeft } =
-            container.value.getBoundingClientRect();
+          if(selectedItem.value && container.value && indicator.value){
+            const { width, left: resultLeft } =
+              selectedItem.value.getBoundingClientRect();
+            const { left: containerLeft } =
+              container.value.getBoundingClientRect();
 
-          indicator.value.style.width = width + "px";
-          indicator.value.style.left = resultLeft - containerLeft + "px";
+            indicator.value.style.width = width + "px";
+            indicator.value.style.left = resultLeft - containerLeft + "px";
+          }
         },
         {
           flush: "post",

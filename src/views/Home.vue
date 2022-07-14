@@ -111,6 +111,7 @@ export default {
       display: inline-block;
       padding: 4rem 3rem;
 
+      text-align: center;
       @media (max-width: 800px) {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;

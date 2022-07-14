@@ -15,7 +15,7 @@ export default {
     },
   },
   setup(props) {
-    const content = ref<string>(null);
+    const content = ref<string>('');
     import(props.path).then((result) => {
       let html = result.default;
       content.value = html;

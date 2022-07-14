@@ -50,7 +50,7 @@ export default {
 
   setup() {
     const asideVisible = inject<Ref<boolean>>("asideVisible");
-    console.log("Doc MenuVisible:" + asideVisible.value);
+    // console.log("Doc MenuVisible:" + asideVisible.value);
     return { asideVisible };
   },
 };

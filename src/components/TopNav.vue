@@ -22,9 +22,9 @@ import { inject, Ref } from "vue";
 
 export default {
   name: "TopNav",
-  props:{
-    toggleMenuButtonVisible:{
-      type:Boolean,
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
       default: false
     },
   },
@@ -33,9 +33,11 @@ export default {
   },
   setup() {
     const asideVisible = inject<Ref<boolean>>("asideVisible");
-    console.log("TopNav asideVisible:" + asideVisible.value);
+    // console.log("TopNav asideVisible:" + asideVisible.value);
     const toggleMenu = () => {
-      asideVisible.value = !asideVisible.value;
+      if (asideVisible) {
+        asideVisible.value = !asideVisible.value;
+      }
     };
     return { toggleMenu };
   },
@@ -63,16 +65,18 @@ export default {
   justify-content: center;
   align-items: center;
 
-  > .logo {
+  >.logo {
     // outline: 1px dashed red;
     max-width: 6em;
     margin-right: auto;
     display: flex;
-    > svg {
+
+    >svg {
       width: 40px;
       height: 40px;
     }
-    > span {
+
+    >span {
       color: #a0e4b0;
       font-size: 2rem;
       font-weight: bolder;
@@ -84,17 +88,17 @@ export default {
     }
   }
 
-  > .menu {
+  >.menu {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
 
-    > li {
+    >li {
       margin: 0 1em;
     }
   }
 
-  > .toggleAside {
+  >.toggleAside {
     display: none;
     // display: inline-block;
     // background-color: red;
@@ -107,13 +111,15 @@ export default {
   }
 
   @media (max-width: 500px) {
-    > .menu {
+    >.menu {
       display: none;
     }
-    > .logo {
+
+    >.logo {
       margin: 0 auto;
     }
-    > .toggleAside {
+
+    >.toggleAside {
       display: block;
     }
   }

@@ -4,6 +4,10 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import md2Vue from "./plugins/md";
 
 const path = require("path");
+const fs= require("fs");
+import {baseParse} from '@vue/compiler-core';
+
+import myExample from './plugins/vite-plugin-my-example';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,5 +26,19 @@ export default defineConfig({
       customDomId: "__svg__icons__dom__",
     }),
     md2Vue(),
+    myExample()
   ],
+    //   vueCustomBlockTransforms: {
+    //   demo: (options) => {
+    //     const { code, path } = options
+    //     const file = fs.readFileSync(path).toString()
+    //     const parsed = baseParse(file).children.find(n => n.tag === 'demo')
+    //     const main = file.split(parsed.loc.source).join('').trim()
+    //     return `export default function (Component) {
+    //       Component.__sourceCode = ${
+    //       JSON.stringify(main)
+    //       }
+    //     }`.trim()
+    //   }
+    // }
 });

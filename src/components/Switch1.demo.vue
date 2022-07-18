@@ -1,6 +1,6 @@
-<demo>
+<!-- <demo>
 基本
-</demo>
+</demo> -->
 
 <template>
     <Switch  v-model:value="isOpen" />

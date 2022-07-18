@@ -6,7 +6,6 @@ import md2Vue from "./plugins/md";
 const path = require("path");
 const fs= require("fs");
 import {baseParse} from '@vue/compiler-core';
-
 import myExample from './plugins/vite-plugin-my-example';
 
 // https://vitejs.dev/config/

@@ -1,6 +1,6 @@
 <template>
-    <button class="sx-button" :class="classes" :disabled="disabled">
-        <span v-if="loading" class="sx-loadingIndicator"></span>
+    <button class="sx-btn" :class="classes" :disabled="disabled">
+        <span v-show="loading" class="sx-loadingIndicator"></span>
         <slot />
     </button>
 </template>
@@ -8,7 +8,7 @@
 <script lang="ts">
 import { computed } from "@vue/reactivity"
 
-const themeMap = [
+const typeMap = [
     'default',
     'primary',
     'success',
@@ -24,11 +24,11 @@ const sizeMap = [
 export default {
     name: "Button",
     props: {
-        theme: {
+        type: {
             type: String,
             default: 'default',
             validator(value) {
-                return themeMap.includes(value);
+                return typeMap.includes(value);
             }
         },
         size: {
@@ -38,9 +38,13 @@ export default {
                 return sizeMap.includes(value);
             }
         },
-        level: {
-            type: String,
-            default: 'normal'
+        link: {
+            type: Boolean,
+            default: false
+        },
+        text: {
+            type: Boolean,
+            default: false
         },
         disabled: {
             type: Boolean,
@@ -52,12 +56,14 @@ export default {
         }
     },
     setup(props) {
-        const { theme, size, level } = props;
+        const { type, size, text, link } = props;
         const classes = computed(() => {
             return {
-                [`sx-theme-${theme}`]: theme,
+                [`sx-type-${type}`]: type,
                 [`sx-size-${size}`]: size,
-                [`sx-level-${level}`]: level,
+                [`sx-btn-text`]: text,
+                [`sx-btn-link`]: link,
+
             }
         });
         return { classes };
@@ -66,7 +72,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
@@ -91,14 +96,16 @@ $color-danger: #dd453a;
 
 $text-color-light: #fff;
 $text-color-dark: #333;
+$text-color-link: #40a9ff;
 
-.sx-button {
+.sx-btn {
     box-sizing: border-box;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     white-space: nowrap;
+    vertical-align: middle;
     border: 1px solid $border-color;
     border-radius: $radius;
     // box-shadow: 0 1px 0 fade-out (black, 0.95);
@@ -117,8 +124,8 @@ $text-color-dark: #333;
 
 }
 
-// theme
-.sx-button {
+// type
+.sx-btn {
     background-color: $color-default;
     color: $text-color-dark;
 
@@ -128,7 +135,7 @@ $text-color-dark: #333;
         color: lighten($text-color-dark, 60%);
     }
 
-    &.sx-theme-primary {
+    &.sx-type-primary {
         background-color: $color-primary;
         color: $text-color-light;
 
@@ -137,7 +144,7 @@ $text-color-dark: #333;
         }
     }
 
-    &.sx-theme-success {
+    &.sx-type-success {
         background-color: $color-success;
         color: $text-color-light;
 
@@ -146,7 +153,7 @@ $text-color-dark: #333;
         }
     }
 
-    &.sx-theme-warning {
+    &.sx-type-warning {
         background-color: $color-warning;
         color: $text-color-light;
 
@@ -155,7 +162,7 @@ $text-color-dark: #333;
         }
     }
 
-    &.sx-theme-danger {
+    &.sx-type-danger {
         background-color: $color-danger;
         color: $text-color-light;
 
@@ -166,7 +173,7 @@ $text-color-dark: #333;
 }
 
 // size
-.sx-button {
+.sx-btn {
     font-size: $font-size-md;
     line-height: $line-height-md;
     padding: 5px 12px;
@@ -184,93 +191,97 @@ $text-color-dark: #333;
     }
 }
 
-.sx-button {
-    // &.sx-theme-link {
-    //     border-color: transparent;
-    //     box-shadow: none;
-    //     color: $blue;
-    //     background-color: inherit;
+// link button & text button
+.sx-btn {
 
-    //     &:hover,
-    //     &:focus {
-    //         color: lighten($blue, 10%);
-    //     }
-    // }
+    &.sx-btn-text,
+    &.sx-btn-link {
 
-    // &.sx-theme-text {
-    //     border-color: transparent;
-    //     box-shadow: none;
-    //     color: inherit;
-    //     background-color: inherit;
-
-    //     &:hover,
-    //     &:focus {
-    //         background: darken(white, 5%);
-    //     }
-    // }
+        border-color: transparent;
+        box-shadow: none;
+        background-color: inherit;
+        color: inherit;
 
 
+        &[disabled] {
+            cursor: not-allowed;
+            background: inherit;
+            color: $grey;
 
-    // &.sx-theme-default.sx-level-main {
-    //     background-color: $blue;
-    //     color: white;
-    // }
+            &:hover,
+            &:focus {
+                text-shadow: none;
+            }
+        }
 
-    // &.sx-theme-default.sx-level-danger {
-    //     background-color: $red;
-    //     color: white;
-    // }
+        &.sx-type-primary {
+            color: $color-primary;
+        }
 
-    // &.sx-theme-link.sx-level-danger {
-    //     color: $red;
-    // }
+        &.sx-type-success {
+            color: $color-success;
+        }
 
-    // &.sx-theme-text.sx-level-danger {
-    //     color: $red;
-    // }
+        &.sx-type-warning {
+            color: $color-warning;
+        }
 
-    // &.sx-theme-default {
-    //     &[disabled] {
-    //         cursor: not-allowed;
-    //         color: $grey;
-    //         background-color: #dbdbdb;
+        &.sx-type-danger {
+            color: $color-danger;
+        }
+    }
 
-    //         &:hover {
-    //             border-color: $grey;
-    //         }
-    //     }
-    // }
+    &.sx-btn-text {
 
-    // &.sx-theme-link,
-    // &.sx-theme-text {
-    //     &[disabled] {
-    //         background: inherit;
-    //         cursor: not-allowed;
-    //         color: $grey;
-    //     }
-    // }
+        &:hover,
+        &:focus {
+            background-color: darken(white, 10%);
+        }
+    }
 
+    &.sx-btn-link {
+        color: $blue;
+
+        &:hover,
+        &:focus {
+            text-shadow: 1px 1px 1px #00000020;
+        }
+    }
+}
+
+// loading
+.sx-btn {
     >.sx-loadingIndicator {
-        width: 12px;
-        height: 12px;
-        display: inline-block;
-        margin-right: 6px;
-        border-radius: 100%;
-        border-color: $blue $blue $blue transparent;
-        border-style: solid;
-        border-width: 2px;
-        animation: sx-spin 1s infinite linear;
-    }
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        vertical-align: middle;
 
-    @keyframes sx-spin {
-
-        0% {
-            transform: rotate(0deg);
+        &::before {
+            content: "";
+            display: inline-block;
+            width: $font-size-md;
+            height: $font-size-md;
+            line-height: $line-height-md;
+            margin-right: 6px;
+            border-radius: 100%;
+            border-color: $blue $blue $blue transparent;
+            border-style: solid;
+            border-width: 2px;
+            animation: sx-spin 1s infinite linear;
         }
 
-        100% {
-            transform: rotate(360deg);
+        @keyframes sx-spin {
+
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     }
+
 }
 </style>

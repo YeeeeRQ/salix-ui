@@ -19,9 +19,6 @@
           <h2>组件列表</h2>
           <ol>
             <li>
-              <router-link to="/doc/switch">Switch</router-link>
-            </li>
-            <li>
               <router-link to="/doc/button">Button</router-link>
             </li>
             <li>
@@ -29,6 +26,9 @@
             </li>
             <li>
               <router-link to="/doc/tabs">Tabs</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/switch">Switch</router-link>
             </li>
           </ol>
         </aside>

@@ -4,7 +4,7 @@
         <div class="demo">
             <h2>基本</h2>
             <div class="demo-component">
-                <component :is="Switch1Demo" />
+                <!-- <component :is="Switch1Demo" /> -->
             </div>
             <div class="demo-actions">
                 <Button>查看代码</Button>
@@ -17,7 +17,7 @@
         <div class="demo">
             <h2>禁用</h2>
             <div class="demo-component">
-                <component :is="Switch3Demo"/>
+                <!-- <component :is="Switch3Demo"/> -->
             </div>
             <div class="demo-actions">
                 <Button>查看代码</Button>
@@ -32,17 +32,21 @@
 
 <script lang="ts">
 import Button from "../../lib/Button.vue";
-import Switch1Demo from '../Switch1.demo.vue';
-import Switch3Demo from '../Switch3.demo.vue';
+import Switch1Demo from '../../Switch1.demo.vue';
+import Switch3Demo from '../../Switch3.demo.vue';
 
+// console.log("sourceCode1:",Switch1Demo?.__sourceCode);
+// console.log("sourceCode3:",Switch3Demo?.__sourceCode);
+// console.log('Switch1Demo',Switch1Demo)
+// console.log('Switch3Demo',Switch3Demo)
 export default {
     components: {
         Button
     },
     setup() {
         return {
-            Switch1Demo,
-            Switch3Demo,
+            // Switch1Demo,
+            // Switch3Demo,
         };
     },
 };

@@ -1,7 +1,3 @@
-<!-- <demo>
-基本
-</demo> -->
-
 <template>
     <Switch  v-model:value="isOpen" />
 </template>

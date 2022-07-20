@@ -5,7 +5,6 @@
             <div class="sx-dialog">
                 <header>
                     <span class="sx-dialog-title">
-                        <!-- {{title}} -->
                         <slot name="title" />
                     </span>
                     <span class="sx-dialog-close" @click="close"></span>
@@ -14,8 +13,8 @@
                     <slot name="content" />
                 </main>
                 <footer>
-                    <Button level="main" @click="ok">OK</Button>
-                    <Button @click="cancel">Cancel</Button>
+                    <Button @click="ok" type="success">OK</Button>
+                    <Button @click="cancel" >Cancel</Button>
                 </footer>
             </div>
         </div>

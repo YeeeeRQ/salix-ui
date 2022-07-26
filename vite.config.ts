@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import md2Vue from "./plugins/md";
 import vueJsx from '@vitejs/plugin-vue-jsx';
+// import globalStyle from '@originjs/vite-plugin-global-style';
 
 const path = require("path");
 // import myExample from './plugins/vite-plugin-my-example';
@@ -33,5 +34,12 @@ export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
     jsxFragment: 'Fragment'
-  }
+  },
+  css:{
+    preprocessorOptions: {
+       scss: {
+         additionalData: `@import "./src/assets/styles/global/variable.scss";`
+       }
+     }
+  } 
 });

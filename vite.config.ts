@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import md2Vue from "./plugins/md";
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 const path = require("path");
 // import myExample from './plugins/vite-plugin-my-example';
@@ -12,6 +13,7 @@ const path = require("path");
 export default defineConfig({
   plugins: [
     vue(),
+    vueJsx(),
     createSvgIconsPlugin({
       // Specify the icon folder to be cached
       iconDirs: [path.resolve(process.cwd(), "src/icons")],
@@ -28,5 +30,8 @@ export default defineConfig({
     // myExample(),
     // addSourceCode()
   ],
-
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment'
+  }
 });

@@ -30,6 +30,12 @@
             <li>
               <router-link to="/doc/switch">Switch</router-link>
             </li>
+            <li>
+              <router-link to="/doc/message">Message</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/input">Input</router-link>
+            </li>
           </ol>
         </aside>
         <main>

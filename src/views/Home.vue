@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/style/helper.scss";
+@import "./src/assets/styles/helper.scss";
 .home {
   width: 800px;
   border: 1px solid red;

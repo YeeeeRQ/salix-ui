@@ -67,6 +67,7 @@ export default {
 
   >.logo {
     // outline: 1px dashed red;
+    line-height: 1.15;
     max-width: 6em;
     margin-right: auto;
     display: flex;

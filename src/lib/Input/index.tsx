@@ -1,7 +1,8 @@
+import './index.scss';
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Input",
+  name: "SxInput",
   props: {
     modelValue: {
       type: String,
@@ -25,18 +26,24 @@ export default defineComponent({
   setup(props, { attrs, slots, emit }) {
     return () => {
       const onInput = (event: Event) => {
+        console.log('onInput');
         const value = (event.target as HTMLInputElement).value;
         if (value !== props.modelValue) {
           emit("update:modelValue", value);
         }
       };
+      const onBlur = (event:Event)=>{
+        console.log('onBlur');
+      }
       return (
-        <div class="sx-input">
+        <div class="sx-field-wrap">
           <input
+          class="sx-field"
             type={props.type}
             value={props.modelValue}
             placeholder={attrs.placeholder as string}
             onInput={onInput}
+            onBlur={onBlur}
           />
         </div>
       );

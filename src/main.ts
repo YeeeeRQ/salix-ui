@@ -9,11 +9,13 @@ import "./lib/salix.scss";
 import { createApp } from "vue";
 import App from "./App.vue";
 import {router} from "./router";
+import libUses from './lib-uses';
 
 // import vm from 'virtual-module';
 // console.log('vm:',vm)
 
 const app = createApp(App);
 app.use(router);
+app.use(libUses);
 app.mount("#app");
 app.component('Markdown', Markdown);

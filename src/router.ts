@@ -13,6 +13,7 @@ import DialogDemo from './components/demo/DialogDemo.vue';
 import TabsDemo from './components/demo/TabsDemo.vue';
 import MessageDemo from './components/demo/MessageDemo.vue';
 import InputDemo from './components/demo/InputDemo.vue';
+import FormDemo from './components/demo/FormDemo.vue';
 
 import { createWebHashHistory, createRouter } from "vue-router";
 import { h } from "vue";
@@ -45,6 +46,7 @@ export const router = createRouter({
         { path: "tabs", component: TabsDemo },
         { path: "message", component: MessageDemo },
         { path: "input", component: InputDemo },
+        { path: "form", component: FormDemo },
       ],
     },
   ],

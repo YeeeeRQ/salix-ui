@@ -36,6 +36,9 @@
             <li>
               <router-link to="/doc/input">Input</router-link>
             </li>
+            <li>
+              <router-link to="/doc/form">Form</router-link>
+            </li>
           </ol>
         </aside>
         <main>

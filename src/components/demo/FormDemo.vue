@@ -1,19 +1,19 @@
 <template>
-  <h1>Input 示例</h1>
+  <h1>Form 示例</h1>
 
   <h2>基本</h2>
-  <!-- <Input v-model="msg" /> -->
-  <sx-input v-model="msg"></sx-input>
+  <sx-form-item>
+    <sx-input v-model="msg"></sx-input>
+  </sx-form-item>
   {{msg}}
+
 </template>
 
 <script lang="ts">
-// import Input from "../../lib/Input";
 import { ref } from "vue";
 
 export default {
-  name: "InputDemo",
-  // components: { Input },
+  name: "FormDemo",
   setup() {
     let msg = ref(null);
 

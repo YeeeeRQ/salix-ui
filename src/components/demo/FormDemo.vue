@@ -19,17 +19,34 @@
     <sx-input v-model="msg" ></sx-input>
   </sx-form-item>
 
+  <h2>表单验证</h2>
+  <sx-form-item label="UserName:" prop="username" :rules="nameRules">
+    <sx-input v-model="username" placeholder="UserName"></sx-input>
+  </sx-form-item>
+  <sx-form-item label="Password:" prop="password">
+    <sx-input v-model="password" placeholder="Password" type="password"></sx-input>
+  </sx-form-item>
+
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { reactive, ref, toRefs } from "vue";
+import {RuleItem} from 'async-validator';
 
 export default {
   name: "FormDemo",
   setup() {
     let msg = ref(null);
+    let data4validator = reactive({
+        username:'Tommy',
+        password:'HelloWorld',
+    })
+    const nameRules = ref<RuleItem>({
+        required: true,
+        message: '请输入用户名'
+    })
 
-    return { msg };
+    return { msg, ...toRefs(data4validator), nameRules };
   },
 };
 </script>

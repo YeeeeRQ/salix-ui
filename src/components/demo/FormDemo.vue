@@ -8,15 +8,15 @@
 
   <h2>通过Prop属性指定label</h2>
   <sx-form-item label="UserName : ">
-    <sx-input v-model="msg" ></sx-input>
+    <sx-input v-model="msg"></sx-input>
   </sx-form-item>
 
   <h2>使用自定义label</h2>
-  <sx-form-item >
+  <sx-form-item>
     <template #label>
-        <b>UserName: </b>
+      <b>UserName: </b>
     </template>
-    <sx-input v-model="msg" ></sx-input>
+    <sx-input v-model="msg"></sx-input>
   </sx-form-item>
 
   <h2>表单验证</h2>
@@ -24,27 +24,40 @@
     <sx-input v-model="username" placeholder="UserName"></sx-input>
   </sx-form-item>
   <sx-form-item label="Password:" prop="password">
-    <sx-input v-model="password" placeholder="Password" type="password"></sx-input>
+    <sx-input
+      v-model="password"
+      placeholder="Password"
+      type="password"
+    ></sx-input>
   </sx-form-item>
-
 </template>
 
 <script lang="ts">
 import { reactive, ref, toRefs } from "vue";
-import {RuleItem} from 'async-validator';
+import { SxRuleItem } from "../../lib/Form/types";
 
 export default {
   name: "FormDemo",
   setup() {
     let msg = ref(null);
     let data4validator = reactive({
-        username:'Tommy',
-        password:'HelloWorld',
-    })
-    const nameRules = ref<RuleItem>({
+      username: "Tommy",
+      password: "HelloWorld",
+    });
+    
+    // 用户名验证规则
+    const nameRules = ref<SxRuleItem | SxRuleItem[]>([
+      {
         required: true,
-        message: '请输入用户名'
-    })
+        message: "请输入用户名",
+        trigger: "blur",
+      },
+      {
+        max: 10,
+        message: "用户名长度超过限制",
+        trigger: "change",
+      },
+    ]);
 
     return { msg, ...toRefs(data4validator), nameRules };
   },

@@ -1,5 +1,6 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, provide, ref } from "vue";
 import './index.scss';
+import { FormItemKey } from "./types";
 
 export default defineComponent({
   name: "SxFormItem",
@@ -16,6 +17,21 @@ export default defineComponent({
     const renderLabel = ()=>{
       return slots.label ? slots.label() : <label class="item-label">{props.label}</label>
     }
+
+    // FormItem 提供给子组件的函数
+    const handleControlChange = (value: string)=>{
+      console.log('handleControlChange: ',value);
+
+    }
+    const handleControlBlur= (value: string)=>{
+      console.log('handleControlBlur: ',value);
+    }
+
+    const FormItemContext = {
+      handleControlChange,
+      handleControlBlur,
+    }
+    provide(FormItemKey, FormItemContext)
 
     return () => {
       return (

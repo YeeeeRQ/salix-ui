@@ -1,6 +1,6 @@
 import { defineComponent, PropType, provide, ref } from "vue";
 import "./index.scss";
-import { FormItemKey, SxRuleItem, ValidTrigger } from "./types";
+import { FormItemContext, FormItemKey, SxRuleItem, ValidTrigger } from "./types";
 import Schema, { RuleItem, ValidateError } from "async-validator";
 
 export default defineComponent({
@@ -82,11 +82,10 @@ export default defineComponent({
       }
     };
 
-    const FormItemContext = {
+    provide<FormItemContext>(FormItemKey, {
       handleControlChange,
       handleControlBlur,
-    };
-    provide(FormItemKey, FormItemContext);
+    });
 
     return () => {
       return (

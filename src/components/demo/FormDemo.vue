@@ -19,8 +19,8 @@
     <sx-input v-model="msg"></sx-input>
   </sx-form-item>
 
-  <h2>表单验证</h2>
-  <sx-form-item label="UserName:" prop="username" :rules="nameRules">
+  <h2>FormItem验证</h2>
+  <sx-form-item label="UserName:" prop="username">
     <sx-input v-model="username" placeholder="UserName"></sx-input>
   </sx-form-item>
   <sx-form-item label="Password:" prop="password">
@@ -30,6 +30,20 @@
       type="password"
     ></sx-input>
   </sx-form-item>
+  <h2>Form表单</h2>
+  <sx-form :model="formValues" :rules="formRules">
+    <sx-form-item label="UserName:" prop="username">
+        <sx-input v-model="username" placeholder="UserName"></sx-input>
+    </sx-form-item>
+    <sx-form-item label="Password:" prop="password">
+        <sx-input
+        v-model="password"
+        placeholder="Password"
+        type="password"
+        ></sx-input>
+    </sx-form-item>
+  </sx-form>
+
 </template>
 
 <script lang="ts">
@@ -44,22 +58,40 @@ export default {
       username: "Tommy",
       password: "HelloWorld",
     });
-    
-    // 用户名验证规则
-    const nameRules = ref<SxRuleItem | SxRuleItem[]>([
-      {
-        required: true,
-        message: "请输入用户名",
-        trigger: "blur",
-      },
-      {
-        max: 10,
-        message: "用户名长度超过限制",
-        trigger: "change",
-      },
-    ]);
 
-    return { msg, ...toRefs(data4validator), nameRules };
+    const formRules = reactive({
+      username: [
+        {
+          required: true,
+          message: "请输入用户名",
+          trigger: "blur",
+        },
+        {
+          max: 10,
+          message: "用户名长度超过限制",
+          trigger: "change",
+        },
+      ],
+      password: [
+        {
+          required: true,
+          message: "请输入密码",
+          trigger: "blur",
+        },
+        {
+          min: 6,
+          message: "密码长度不应少于6位",
+          trigger: "change",
+        },
+        {
+          max: 18,
+          message: "密码长度超过限制",
+          trigger: "change",
+        },
+      ],
+    });
+
+    return { msg, ...toRefs(data4validator), formRules };
   },
 };
 </script>

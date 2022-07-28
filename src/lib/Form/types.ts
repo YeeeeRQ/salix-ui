@@ -7,7 +7,7 @@ interface SxRuleItem extends RuleItem{
 }
 
 interface SxFormRules{
-    [key:string]:SxRuleItem |SxFormRules[];
+    [key:string]: SxRuleItem | SxRuleItem[];
 }
 
 

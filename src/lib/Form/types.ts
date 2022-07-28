@@ -12,9 +12,14 @@ interface SxRuleItem extends RuleItem{
     trigger?:ValidTrigger
 }
 
+interface SxFormRules{
+    [key:string]:SxRuleItem |SxFormRules[];
+}
+
 export{
     FormItemKey,
     type FormItemContext,
     type SxRuleItem,
     type ValidTrigger,
+    type SxFormRules,
 }

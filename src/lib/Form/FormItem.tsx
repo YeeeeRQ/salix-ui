@@ -1,6 +1,5 @@
-import { defineComponent, PropType, provide, ref } from "vue";
-import "./index.scss";
-import { FormItemContext, FormItemKey, SxRuleItem, ValidTrigger } from "./types";
+import { defineComponent, inject, PropType, provide, ref } from "vue";
+import { FormContext, FormItemContext, FormItemKey, FormKey, SxRuleItem, ValidTrigger } from "./types";
 import Schema, { RuleItem, ValidateError } from "async-validator";
 
 export default defineComponent({
@@ -20,8 +19,11 @@ export default defineComponent({
   },
   setup(props, { attrs, slots, emit }) {
     const errMsg = ref("");
+
+    const parent = inject<FormContext>(FormKey);
+
     const getRules = (trigger: ValidTrigger):SxRuleItem[] => {
-      const rules = props.rules;
+      const rules = props.rules || parent?.rules[props.prop];
       if(rules){
         const ruleArr = Array.isArray(rules) ? rules : [rules];
         const trueRules = ruleArr.filter((item) => {

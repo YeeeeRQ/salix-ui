@@ -31,7 +31,7 @@
     ></sx-input>
   </sx-form-item>
   <h2>Form表单</h2>
-  <sx-form :model="formValues" :rules="formRules">
+  <sx-form :model="formValues" :rules="formRules" >
     <sx-form-item label="UserName:" prop="username">
         <sx-input v-model="username" placeholder="UserName"></sx-input>
     </sx-form-item>

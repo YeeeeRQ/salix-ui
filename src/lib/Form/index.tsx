@@ -1,3 +1,4 @@
+import "./index.scss";
 import { defineComponent, PropType, provide } from "vue";
 import { FormContext, FormKey, SxFormRules } from "./types";
 

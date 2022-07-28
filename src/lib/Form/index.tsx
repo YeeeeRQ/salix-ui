@@ -1,5 +1,5 @@
-import { defineComponent, PropType } from "vue";
-import { SxFormRules } from "./types";
+import { defineComponent, PropType, provide } from "vue";
+import { FormContext, FormKey, SxFormRules } from "./types";
 
 export default defineComponent({
   name: "SxForm",
@@ -8,6 +8,10 @@ export default defineComponent({
     rules: Object as PropType<SxFormRules>
   },
   setup(props, { attrs, slots, emit }) {
+    provide<Partial<FormContext>>(FormKey, {
+      model: props.model,
+      rules: props.rules,
+    });
     return () => {
         return (
           <div className="sx-form">

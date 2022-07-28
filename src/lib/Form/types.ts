@@ -1,10 +1,4 @@
-const FormItemKey = 'formItemKey'
 import { RuleItem } from 'async-validator';
-
-interface FormItemContext {
-    handleControlChange(value:string):void,
-    handleControlBlur(value:string):void,
-}
 
 type ValidTrigger = 'change' | 'blur';
 
@@ -16,10 +10,27 @@ interface SxFormRules{
     [key:string]:SxRuleItem |SxFormRules[];
 }
 
+
+const FormKey = 'formKey';
+interface FormContext{
+    model:Record<string,any>;
+    rules: SxFormRules;
+}
+
+const FormItemKey = 'formItemKey'
+interface FormItemContext {
+    handleControlChange(value:string):void,
+    handleControlBlur(value:string):void,
+}
+
 export{
+    FormKey,
+    type FormContext,
+
     FormItemKey,
     type FormItemContext,
-    type SxRuleItem,
+
     type ValidTrigger,
+    type SxRuleItem,
     type SxFormRules,
 }

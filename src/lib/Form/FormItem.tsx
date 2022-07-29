@@ -20,6 +20,7 @@ export default defineComponent({
   setup(props, { attrs, slots, emit }) {
     const errMsg = ref("");
 
+    // Todo: 消除不被Form包含时的警告
     const parent = inject<FormContext>(FormKey);
 
     const getRules = (trigger: ValidTrigger):SxRuleItem[] => {
@@ -35,7 +36,7 @@ export default defineComponent({
       return [];
     };
 
-    const validate = (value: string, rules: SxRuleItem[]): Promise<any> => {
+    const validate = (value: string, rules: SxRuleItem[]): Promise<boolean | ValidateError[]> => {
       if (rules && props.prop) {
         // const value = value
         const schema = new Schema({ [props.prop]: rules });

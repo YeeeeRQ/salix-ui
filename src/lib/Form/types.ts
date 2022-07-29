@@ -1,4 +1,5 @@
 import { RuleItem } from 'async-validator';
+import { ValidateError } from 'async-validator';
 
 type ValidTrigger = 'change' | 'blur';
 
@@ -10,11 +11,12 @@ interface SxFormRules{
     [key:string]: SxRuleItem | SxRuleItem[];
 }
 
-
+type validateFunc = (callback: (valid: boolean) => void)=> Promise<boolean | ValidateError[]>;
 const FormKey = 'formKey';
 interface FormContext{
     model:Record<string,any>;
     rules: SxFormRules;
+    validate: validateFunc;
 }
 
 const FormItemKey = 'formItemKey'
@@ -25,6 +27,7 @@ interface FormItemContext {
 
 export{
     FormKey,
+    type validateFunc,
     type FormContext,
 
     FormItemKey,

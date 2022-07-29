@@ -1,6 +1,7 @@
 import "./index.scss";
-import { defineComponent, PropType, provide } from "vue";
-import { FormContext, FormKey, SxFormRules } from "./types";
+import { defineComponent, getCurrentInstance,PropType, provide } from "vue";
+import { FormContext, FormKey, SxFormRules, validateFunc } from "./types";
+import { useExpose } from "../../uses";
 
 export default defineComponent({
   name: "SxForm",
@@ -13,6 +14,17 @@ export default defineComponent({
       model: props.model,
       rules: props.rules,
     });
+
+    const validate:validateFunc = (callback)=>{
+      console.log('form validate');
+      if(callback){
+        callback(true);
+      }
+      return Promise.resolve(true);
+    }
+
+    useExpose<{validate:validateFunc}>({ validate });
+
     return () => {
         return (
           <div className="sx-form">
@@ -21,4 +33,9 @@ export default defineComponent({
         )
     }
   },
+  // methods:{
+  //   validate(){
+  //     console.log('validate');
+  //   }
+  // }
 });

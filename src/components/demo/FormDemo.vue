@@ -1,5 +1,5 @@
 <template>
-  <h1>Form 示例</h1>
+  <!-- <h1>Form 示例</h1>
 
   <h2>基本</h2>
   <sx-form-item label="账号：">
@@ -29,9 +29,10 @@
       placeholder="Password"
       type="password"
     ></sx-input>
-  </sx-form-item>
+  </sx-form-item> -->
+
   <h2>Form表单</h2>
-  <sx-form :model="formValues" :rules="formRules" >
+  <sx-form :model="data4validator" :rules="formRules" ref="SxForm">
     <sx-form-item label="UserName:" prop="username">
         <sx-input v-model="username" placeholder="UserName"></sx-input>
     </sx-form-item>
@@ -42,13 +43,14 @@
         type="password"
         ></sx-input>
     </sx-form-item>
+    <button @click="submit">提交</button>
   </sx-form>
 
 </template>
 
 <script lang="ts">
 import { reactive, ref, toRefs } from "vue";
-import { SxRuleItem } from "../../lib/Form/types";
+import { FormContext, SxRuleItem } from "../../lib/Form/types";
 
 export default {
   name: "FormDemo",
@@ -91,7 +93,15 @@ export default {
       ],
     });
 
-    return { msg, ...toRefs(data4validator), formRules };
+    const SxForm = ref<FormContext|null>(null);
+    const submit = ()=>{
+      // console.log('submit :', SxForm.value?.validate());
+      SxForm.value!.validate((valid: boolean)=>{
+        console.log('valid: ', valid);
+      })
+    }
+
+    return { msg, data4validator,...toRefs(data4validator), formRules,submit,SxForm };
   },
 };
 </script>

@@ -1,0 +1,42 @@
+
+.sx-msg {
+    z-index: 2100;
+    position: fixed;
+    top: 26px;
+    left: 50%;
+    transform: translate(-50%);
+
+    display: flex;
+    min-width: 260px;
+    background-color: #3add99;
+    padding: 16px 38px 10px 26px;
+    border-radius: 3px;
+    color: #fff;
+
+    &.is-center {
+        justify-content: center;
+    }
+
+    &.sx-msg-info {
+        background-color: #3add99;
+    }
+
+    &.sx-msg-success {
+        background-color: #3add99;
+    }
+
+    >.closeIcon {
+        width: 14px;
+        height: 14px;
+        border-radius: 12px;
+        background-color: #fff;
+        // border: 1px solid red;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        &:hover {
+            background-color: #ff6666;
+        }
+    }
+}

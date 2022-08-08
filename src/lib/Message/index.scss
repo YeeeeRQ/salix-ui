@@ -3,7 +3,7 @@
     position: fixed;
     top: 26px;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
 
     display: flex;
     min-width: 260px;
@@ -11,7 +11,7 @@
     padding: 16px 38px 10px 26px;
     border-radius: 3px;
     color: #fff;
-    transition: all 0.5s linear;
+    transition: opacity .85s ease;
 
     &.is-center {
         justify-content: center;
@@ -26,28 +26,60 @@
     }
 
     &.sx-msg-error{
-        background-color: #dd453a;
+        background-color: #FF3333;
     }
 
-    >.closeIcon {
-        width: 14px;
-        height: 14px;
-        border-radius: 12px;
-        background-color: #fff;
-        // border: 1px solid red;
-        position: absolute;
-        top: 10px;
-        right: 10px;
+    &.sx-msg-warning{
+        background-color: #ddc73a;
+    }
 
-        transition: all 0.5s linear;
+    >.closeTag {
+        width: 30px;
+        height: 100%;
+        border-radius: 0 3px 3px 0;
+        background-color: #ffffcc;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+
+        transition: all 0.25s ease-in;
 
         &:hover {
-            background-color: #ff6666;
+            width: 60px;
         }
     }
 }
+
 
 .sx-msg-fade-enter-from,
 .sx-msg-fade-leave-to {
     opacity: 0;
 }
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-50%) translate3d(-2px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translateX(-50%) translate3d(4px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-50%) translate3d(-6px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translateX(-50%) translate3d(6px, 0, 0);
+  }
+}
+
+.sx-msg-fade-enter-active{
+    animation: shake 1s ease;
+}
+

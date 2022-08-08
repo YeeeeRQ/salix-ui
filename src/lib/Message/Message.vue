@@ -4,10 +4,9 @@
     @before-leave="onClose"
     @after-leave="emit('destroy', props.id)"
 >
-    <div class="sx-msg" :class="classes" v-show="visible" :style="styles">
-        <!-- messagemessagemessagemessagemessagemessagemessagemessagemessagemessage message message message message -->
+    <div class="sx-msg" :class="classes" :style="styles" v-show="visible" >
         {{id}} {{message}}
-        <span class="closeIcon" @click="hideMessage"></span>
+        <span class="closeTag" @click="hideMessage"></span>
     </div>
 </transition>
 </template>
@@ -44,7 +43,7 @@ const classes = computed(() => [
     "sx-msg-" + props.type, props.center ? "is-center" : "",
 ]);
 
-const visible = ref(true);
+const visible = ref(false);
 
 const hideMessage = () => {
     visible.value = false;
@@ -70,6 +69,10 @@ const hideOnTime = () => {
 // 不指定duration则需手动关闭message
 if (props.duration > 0) {
     hideOnTime();
+}else{
+    onMounted(()=>{
+        visible.value = true;
+    })
 }
 
 const styles = computed(()=>({

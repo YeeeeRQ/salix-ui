@@ -1,6 +1,19 @@
 <template>
     <div>
         <h1>Switch 开关</h1>
+            <h2>基本</h2>
+            <Switch v-model="isOpen" ></Switch>
+            <p>
+                isOpen: {{isOpen}}
+            </p>
+            <br>
+            <h2>禁用</h2>
+            <Switch v-model="isOpen" disabled></Switch>
+            <p>
+                isOpen: {{isOpen}}
+            </p>
+
+
         <div class="demo">
             <h2>基本</h2>
             <div class="demo-component">
@@ -31,9 +44,9 @@
 </template>
 
 <script lang="ts">
-import Button from "../../lib/Button.vue";
-import Switch1Demo from '../../Switch1.demo.vue';
-import Switch3Demo from '../../Switch3.demo.vue';
+import { ref } from "vue";
+import Button from "../../lib/Button/Button.vue";
+import Switch from "../../lib/Switch/Switch.vue";
 
 // console.log("sourceCode1:",Switch1Demo?.__sourceCode);
 // console.log("sourceCode3:",Switch3Demo?.__sourceCode);
@@ -41,12 +54,16 @@ import Switch3Demo from '../../Switch3.demo.vue';
 // console.log('Switch3Demo',Switch3Demo)
 export default {
     components: {
-        Button
+    Button,
+    Switch
     },
     setup() {
+        const isOpen = ref(false);
+
         return {
             // Switch1Demo,
             // Switch3Demo,
+            isOpen
         };
     },
 };

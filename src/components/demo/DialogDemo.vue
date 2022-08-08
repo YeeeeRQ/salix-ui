@@ -23,11 +23,11 @@
 </template>
 
 <script lang="ts">
-import Dialog from '../../lib/Dialog.vue';
-import Button from '../../lib/Button.vue';
+import Dialog from '../../lib/Dialog/Dialog.vue';
+import Button from '../../lib/Button/Button.vue';
 import { ref } from 'vue';
 
-import { openDialog } from '../../lib/openDialog';
+import { openDialog } from '../../lib/Dialog/openDialog';
 
 export default {
     name: "SwitchDemo",

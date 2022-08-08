@@ -3,36 +3,32 @@
 
     <h2>基本</h2>
     <article>
-        <Button type="default" @click="onClick">Normal</Button>
-        <Button type="success" @click="openMsg">Success</Button>
-        <Button type="danger">Error</Button>
-        <Button type="warning">Warning</Button>
+        <Button type="default" @click="openMessage({message:'Info' , type:'info'})">Info</Button>
+        <Button type="success" @click="openMessage({message:'Success', type:'success'})">Success</Button>
+        <Button type="danger" @click="openMessage({message:'Error', type:'error'})">Error</Button>
+        <Button type="warning" @click="openMessage({message:'Warning', type:'warning'})">Warning</Button>
     </article>
 
     <article>
-        <Message><template #content>阿斯蒂芬</template></Message>
-        <Message><template #content>阿斯蒂芬</template></Message>
+        <!-- <Message><template #content>阿斯蒂芬</template></Message> -->
     </article>
-
 </template>
 
 <script lang="ts">
-import Button from '../../lib/Button.vue';
-import Message from '../../lib/Message.vue';
-import { openMessage } from '../../lib/SxMessage';
+import Button from '../../lib/Button/Button.vue';
+import Message from '../../lib/Message/Message.vue';
+import { openMessage } from '../../lib/Message';
 
 export default {
     name: "MessageDemo",
     components: { Button, Message },
     setup() {
-        const openMsg = () => {
-            openMessage({ content: "hello" });
-        }
+
         const onClick = () => {
             console.log('hi');
         }
 
-        return { openMsg,onClick }
+        return { onClick, openMessage }
     }
 }
 </script>

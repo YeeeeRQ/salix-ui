@@ -96,7 +96,7 @@ export default {
     const SxForm = ref<FormContext|null>(null);
     const submit = ()=>{
       // console.log('submit :', SxForm.value?.validate());
-      SxForm.value!.validate((valid: boolean)=>{
+      SxForm.value!.validate((valid)=>{
         console.log('valid: ', valid);
       })
     }

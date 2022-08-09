@@ -13,7 +13,7 @@
     </div>
 
     <div class="sx-tabs-content">
-      <component class="sx-tabs-content-item" :is="currentContent" :key="currentContent.props.title" />
+      <component class="sx-tabs-content-item" :is="currentContent" :key="currentContent.props.id" />
     </div>
 
   </div>
@@ -34,61 +34,72 @@ const emit = defineEmits<{
 
 const slots = useSlots()
 
-// 动态计算indicator宽度
-const selectedItem = ref<HTMLDivElement | null>(null);
-const indicator = ref<HTMLDivElement | null>(null);
-const container = ref<HTMLDivElement | null>(null);
-onMounted(() => {
-  watchEffect(
-    () => {
-      if (selectedItem.value && container.value && indicator.value) {
-        const { width, left: resultLeft } =
-          selectedItem.value.getBoundingClientRect();
-        const { left: containerLeft } =
-          container.value.getBoundingClientRect();
+// 主要内容展示
+const contextRelativeEffect = () => {
 
-        indicator.value.style.width = width + "px";
-        indicator.value.style.left = resultLeft - containerLeft + "px";
-      }
-    },
-    {
-      flush: "post",
+  // 子组件类型校验
+  if (!slots.default) {
+    throw new Error("Tabs 子标签必须包含Tab");
+  }
+
+  const defaultSlots = slots.default!();
+  defaultSlots.forEach((tab) => {
+    if (tab.type !== Tab) {
+      throw new Error("Tabs 子标签必须为 Tab");
     }
-  );
-});
+  });
 
-// 子组件类型校验
-if (!slots.default) {
-  throw new Error("Tabs 子标签必须包含Tab");
+  // Tabs titles 
+  const titles = defaultSlots.map((tab) => {
+    const disabled: boolean = tab.props!.disabled || tab.props!.disabled === "";
+    const title = tab.props!.title;
+    return {
+      title,
+      disabled,
+    }
+  });
+
+  const select = (t: { title: string; disabled: boolean }) => {
+    if (!t.disabled) {
+      emit("update:selectedTitle", t.title);
+    }
+  };
+
+  // Tabs content
+  const currentContent = computed(() => {
+    return defaultSlots.find((tab) => tab.props!.title === props.selectedTitle);
+  });
+
+  return { titles, select, currentContent, }
+}
+// 动态计算indicator宽度
+const indicatorAdjust = () => {
+  const selectedItem = ref<HTMLDivElement | null>(null);
+  const indicator = ref<HTMLDivElement | null>(null);
+  const container = ref<HTMLDivElement | null>(null);
+  onMounted(() => {
+    watchEffect(
+      () => {
+        if (selectedItem.value && container.value && indicator.value) {
+          const { width, left: resultLeft } =
+            selectedItem.value.getBoundingClientRect();
+          const { left: containerLeft } =
+            container.value.getBoundingClientRect();
+
+          indicator.value.style.width = width + "px";
+          indicator.value.style.left = resultLeft - containerLeft + "px";
+        }
+      },
+      {
+        flush: "post",
+      }
+    );
+  });
+  return { container, indicator, selectedItem }
 }
 
-const defaultSlots = slots.default!();
-defaultSlots.forEach((tab) => {
-  if (tab.type !== Tab) {
-    throw new Error("Tabs 子标签必须为 Tab");
-  }
-});
-
-// Tabs titles 
-const titles = defaultSlots.map((tab) => {
-  const disabled: boolean = tab.props!.disabled || tab.props!.disabled === "";
-  const title = tab.props!.title;
-  return {
-    title,
-    disabled,
-  }
-});
-
-const select = (t: { title: string; disabled: boolean }) => {
-  if (!t.disabled) {
-    emit("update:selectedTitle", t.title);
-  }
-};
-
-// Tabs content
-const currentContent = computed(() => {
-  return defaultSlots.find((tab) => tab.props!.title === props.selectedTitle);
-});
+const { titles, select, currentContent } = contextRelativeEffect()
+const { container, indicator, selectedItem } = indicatorAdjust()
 
 </script>
 

@@ -41,18 +41,18 @@ export default {
             visible.value = !visible.value;
         }
         const f1 = () => {
-            console.log("f1");
-            return false;
+            console.log("call f1");
+            return true;
         }
         const f2 = () => {
-            console.log("f2");
-            return false;
+            console.log("call f2");
+            return true;
         }
 
         const showDialog = () => {
             openDialog({
-                title: '标题',
-                content: '你好',
+                title: () => '标题',
+                content: () => '你好',
                 ok() {
                     console.log('ok')
                     return true;

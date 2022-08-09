@@ -4,7 +4,9 @@
   <h2>基本</h2>
   <!-- <Input v-model="msg" /> -->
   <sx-input v-model="msg"></sx-input>
-  {{msg}}
+  <sx-input v-model="msg" placeholder="placeholder"></sx-input>
+  <sx-input v-model="msg" placeholder="password" type="password"></sx-input>
+  {{ msg }}
 </template>
 
 <script lang="ts">

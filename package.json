@@ -1,11 +1,12 @@
 {
   "name": "salix",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:type": "tsc --project src/lib/tsconfig.json"
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^2.0.0",

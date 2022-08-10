@@ -1,16 +1,12 @@
 <template>
-    <div>
-        <slot />
-    </div>
+  <div>
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
-export default {
-    name: "Tab"
-}
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "SxTab",
+});
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

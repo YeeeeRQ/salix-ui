@@ -11,7 +11,7 @@
     padding: 16px 38px 10px 26px;
     border-radius: 3px;
     color: #fff;
-    transition: opacity .85s ease;
+    transition: opacity .25s ease, top .25s ease-out;
 
     &.is-center {
         justify-content: center;

@@ -8,12 +8,9 @@
 <script lang="ts" setup>
 import "./index.scss";
 
-let ButtonType: "default" | "primary" | "success" | "warning" | "danger";
-let ButtonSize: "medium" | "small" | "large";
-
 interface Props {
-  type?: typeof ButtonType;
-  size?: typeof ButtonSize;
+  type?: "default" | "primary" | "success" | "warning" | "danger";
+  size?: "medium" | "small" | "large";
   link?: boolean;
   text?: boolean;
   disabled?: boolean;

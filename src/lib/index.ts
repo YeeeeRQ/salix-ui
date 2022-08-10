@@ -10,7 +10,7 @@ import Tab from "./Tab";
 import Dialog from "./Dialog";
 
 import { openMessage } from "./Message";
-import { openDialog } from "./Dialog";
+import { openDialog } from "./Dialog/utils";
 
 const components = [Button, Switch, Input, Form, FormItem, Tabs, Tab, Dialog];
 

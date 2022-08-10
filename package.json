@@ -4,9 +4,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build:vue": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "build:type": "tsc --project src/lib/tsconfig.json"
+    "build:type": "tsc --project src/lib/tsconfig.json",
+    "build:esm": "rollup --format esm -c build/rollup.config.js",
+    "build:umd": "rollup --format umd -c build/rollup.config.js",
+    "build:lib": "npm run build:esm && npm run build:umd",
+    "build": "npm run build:lib && npm run build:types"
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^2.0.0",
@@ -21,9 +25,18 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "fast-glob": "^3.2.11",
     "marked": "^4.0.18",
+    "rollup": "^2.77.2",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "rollup-plugin-vue": "^6.0.0",
     "typescript": "^4.5.4",
     "vite": "3.0.0",
     "vite-plugin-svg-icons": "^2.0.1",

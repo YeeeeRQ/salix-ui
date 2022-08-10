@@ -5,58 +5,44 @@
   </button>
 </template>
 
+<script lang="ts" setup>
+import "./index.scss";
+
+let ButtonType: "default" | "primary" | "success" | "warning" | "danger";
+let ButtonSize: "medium" | "small" | "large";
+
+interface Props {
+  type?: typeof ButtonType;
+  size?: typeof ButtonSize;
+  link?: boolean;
+  text?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  type: "default",
+  size: "medium",
+  link: false,
+  text: false,
+  disabled: false,
+  loading: false,
+});
+
+const { type, size, text, link } = props;
+const classes = computed(() => {
+  return {
+    [`sx-type-${type}`]: type,
+    [`sx-size-${size}`]: size,
+    [`sx-btn-text`]: text,
+    [`sx-btn-link`]: link,
+  };
+});
+</script>
+
 <script lang="ts">
-import './index.scss';
-import { computed } from "@vue/reactivity";
-
-const typeMap = ["default", "primary", "success", "warning", "danger"];
-const sizeMap = ["medium", "small", "large"];
-
-export default {
-  name: "Button",
-  props: {
-    type: {
-      type: String,
-      default: "default",
-      validator(value) {
-        return typeMap.includes(value);
-      },
-    },
-    size: {
-      type: String,
-      default: "medium",
-      validator(value) {
-        return sizeMap.includes(value);
-      },
-    },
-    link: {
-      type: Boolean,
-      default: false,
-    },
-    text: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    loading: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup(props) {
-    const { type, size, text, link } = props;
-    const classes = computed(() => {
-      return {
-        [`sx-type-${type}`]: type,
-        [`sx-size-${size}`]: size,
-        [`sx-btn-text`]: text,
-        [`sx-btn-link`]: link,
-      };
-    });
-    return { classes };
-  },
-};
+import { computed, defineComponent } from "vue";
+export default defineComponent({
+  name: "SxButton",
+});
 </script>

@@ -27,10 +27,16 @@ $t: 0.4s;
     }
 
     &.sx-checked {
-        background-color: rgb(45, 217, 120);
+        background-color: #2dd978;
     }
 
     &::focus {
         outline: none;
     }
+
+    &.sx-disabled {
+        cursor: not-allowed;
+        background-color: lighten(#a7b7c0, 15%);
+    }
+
 }

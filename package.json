@@ -1,5 +1,5 @@
 {
-  "name": "salix-ui",
+  "name": "salix",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "animate.css": "^4.1.1",
     "async-validator": "^4.2.5",
     "github-markdown-css": "^5.1.0",
     "highlight.js": "^11.5.1",

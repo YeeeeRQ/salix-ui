@@ -1,4 +1,15 @@
 <template>
+  <!-- <h2>基本</h2>
+  <sx-form-item label="账号：">
+    <sx-input v-model="msg" placeholder="用户名"></sx-input>
+  </sx-form-item>
+
+  <sx-form-item>
+    <template #label>
+      <b>UserName: </b>
+    </template>
+    <sx-input v-model="msg"></sx-input>
+  </sx-form-item> -->
   <!-- <h1>Form 示例</h1>
 
   <h2>基本</h2>
@@ -31,7 +42,7 @@
     ></sx-input>
   </sx-form-item> -->
 
-  <h2>Form表单</h2>
+  <!-- <h2>Form表单</h2>
   <sx-form :model="data4validator" :rules="formRules" ref="SxForm">
     <sx-form-item label="UserName:" prop="username">
         <sx-input v-model="username" placeholder="UserName"></sx-input>
@@ -44,8 +55,7 @@
         ></sx-input>
     </sx-form-item>
     <button @click="submit">提交</button>
-  </sx-form>
-
+  </sx-form> -->
 </template>
 
 <script lang="ts">
@@ -93,15 +103,22 @@ export default {
       ],
     });
 
-    const SxForm = ref<FormContext|null>(null);
-    const submit = ()=>{
+    const SxForm = ref<FormContext | null>(null);
+    const submit = () => {
       // console.log('submit :', SxForm.value?.validate());
-      SxForm.value!.validate((valid)=>{
-        console.log('valid: ', valid);
-      })
-    }
+      SxForm.value!.validate((valid) => {
+        console.log("valid: ", valid);
+      });
+    };
 
-    return { msg, data4validator,...toRefs(data4validator), formRules,submit,SxForm };
+    return {
+      msg,
+      data4validator,
+      ...toRefs(data4validator),
+      formRules,
+      submit,
+      SxForm,
+    };
   },
 };
 </script>

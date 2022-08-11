@@ -25,11 +25,6 @@ import {
 } from "./types";
 import Schema, { ValidateError } from "async-validator";
 
-interface Props {
-  label?: string;
-  prop?: string;
-  rules?: SxRuleItem | SxRuleItem[];
-}
 const props = withDefaults(defineProps<Props>(), {
   label: "",
   prop: "",
@@ -99,6 +94,11 @@ provide<Partial<FormItemContext>>(FormItemKey, {
 
 <script lang="ts">
 import { defineComponent } from "vue";
+interface Props {
+  label?: string;
+  prop?: string;
+  rules?: SxRuleItem | SxRuleItem[];
+}
 export default defineComponent({
   name: "SxFormItem",
 });

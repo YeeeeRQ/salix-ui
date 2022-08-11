@@ -15,10 +15,6 @@
 import "./index.scss";
 import { FormItemContext, FormItemKey } from "../Form/types";
 
-interface Props {
-  modelValue?: string;
-  type?: string;
-}
 const props = withDefaults(defineProps<Props>(), {
   modelValue: "",
   type: "text",
@@ -48,6 +44,10 @@ const onBlur = (event: Event) => {
 
 <script lang="ts">
 import { defineComponent, inject, useAttrs } from "vue";
+interface Props {
+  modelValue?: string;
+  type?: string;
+}
 export default defineComponent({
   name: "SxInput",
   inheritAttrs: false,

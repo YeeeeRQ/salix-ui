@@ -6,6 +6,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+interface Props {
+  model: object;
+  rules?: SxFormRules;
+}
 export default defineComponent({
   name: "SxForm",
 });
@@ -16,10 +20,6 @@ import "./index.scss";
 import { provide } from "vue";
 import { FormContext, FormItemContext, FormKey, SxFormRules } from "./types";
 
-interface Props {
-  model: object;
-  rules?: SxFormRules;
-}
 const props = defineProps<Props>();
 
 const formItems: FormItemContext[] = [];

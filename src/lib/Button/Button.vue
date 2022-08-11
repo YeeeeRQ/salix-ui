@@ -5,17 +5,25 @@
   </button>
 </template>
 
-<script lang="ts" setup>
-import "./index.scss";
-
+<script lang="ts">
+import { computed, defineComponent } from "vue";
+type buttonType = "default" | "primary" | "success" | "warning" | "danger";
+type buttonSize = "medium" | "small" | "large";
 interface Props {
-  type?: "default" | "primary" | "success" | "warning" | "danger";
-  size?: "medium" | "small" | "large";
+  type?: buttonType;
+  size?: buttonSize;
   link?: boolean;
   text?: boolean;
   disabled?: boolean;
   loading?: boolean;
 }
+export default defineComponent({
+  name: "SxButton",
+});
+</script>
+
+<script lang="ts" setup>
+import "./index.scss";
 
 const props = withDefaults(defineProps<Props>(), {
   type: "default",
@@ -34,12 +42,5 @@ const classes = computed(() => {
     [`sx-btn-text`]: text,
     [`sx-btn-link`]: link,
   };
-});
-</script>
-
-<script lang="ts">
-import { computed, defineComponent } from "vue";
-export default defineComponent({
-  name: "SxButton",
 });
 </script>

@@ -1,36 +1,40 @@
 <template>
-    <button class="sx-switch" :class="{ 'sx-checked': modelValue, 'sx-disabled': disabled }" @click="toggle">
-        <span class="sx-circle"></span>
-    </button>
+  <button
+    class="sx-switch"
+    :class="{ 'sx-checked': modelValue, 'sx-disabled': disabled }"
+    @click="toggle"
+  >
+    <span class="sx-circle"></span>
+  </button>
 </template>
 
 <script lang="ts" setup>
-import './index.scss';
+import "./index.scss";
 
-interface Props {
-    modelValue?: boolean
-    disabled?: boolean
-}
 const props = withDefaults(defineProps<Props>(), {
-    modelValue: false,
-    disabled: false,
-})
+  modelValue: false,
+  disabled: false,
+});
 
 const emit = defineEmits<{
-    (e: 'update:modelValue', value: boolean): void
-}>()
+  (e: "update:modelValue", value: boolean): void;
+}>();
 
 const toggle = () => {
-    if (props.disabled) return;
-    emit('update:modelValue', !props.modelValue)
-}
-
+  if (props.disabled) return;
+  emit("update:modelValue", !props.modelValue);
+};
 </script>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
+
+interface Props {
+  modelValue?: boolean;
+  disabled?: boolean;
+}
 export default defineComponent({
-    name: "Switch",
-    inheritAttrs: false,
-})
+  name: "Switch",
+  inheritAttrs: false,
+});
 </script>

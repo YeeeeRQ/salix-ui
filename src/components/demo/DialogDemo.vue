@@ -38,7 +38,7 @@ import Dialog from "../../lib/Dialog/Dialog.vue";
 import Button from "../../lib/Button/Button.vue";
 import { ref } from "vue";
 
-import { openDialog } from "../../lib/Dialog";
+import { openDialog } from "../../lib/Dialog/utils";
 
 export default {
   name: "SwitchDemo",
